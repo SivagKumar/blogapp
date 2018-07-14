@@ -8,8 +8,6 @@ export class ArticleService {
    result: any;
 
   constructor( private _http: Http) {}
-
-  
   getArticles() {
     return this._http.get('/api/all')
     .map(result => this.result = result.json());
