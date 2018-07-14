@@ -1,3 +1,5 @@
+# This is a mean stack app created using HTML 5, CSS, Angular 2, Bootstrap, Node.js, Express.js,
+
 # Blogapp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
