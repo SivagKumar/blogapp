@@ -1,7 +1,7 @@
 const express= require('express')
 const router= express.Router();
 const mongoose= require('mongoose');
-const db= "Your db link";
+const db= " PLEASE ENTER YOUR DB LINK";
 const article= require('../models/article');
 
 mongoose.Promise = global.Promise;
