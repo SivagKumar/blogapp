@@ -1,0 +1,16 @@
+
+.alert{
+    color:red;
+}
+
+.ng-invalid:not(.ng-pristine):not(.required-invalid) {
+    border: 1px solid #d93a3e;
+}  
+
+ input[type="submit"] {
+    background: rgba(0,128,0, 0.5);
+  }
+  
+input[type="submit"]:disabled {
+   background:rgba(255, 0, 0, 0.5);
+  }

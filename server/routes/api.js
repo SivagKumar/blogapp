@@ -46,7 +46,7 @@ router.post('/create', (req,res) => {
     console.log('Posting a single article');
     
     var newArticle= new article();
-    newArticle.tile= req.body.title;
+    newArticle.title= req.body.title;
     newArticle.content= req.body.content;
     newArticle.save( (err, article) => {
           if(err){
@@ -57,4 +57,26 @@ router.post('/create', (req,res) => {
           }
     });
 });
+
+router.post('/update/:id', (req,res) => {
+ 
+    console.log('updating a single article');
+    
+    article.findById(req.params.id)
+      .exec((err, article) => {
+          if(err){
+            console.log('Article does not exist');
+          }
+          else{
+              article.title=req.body.title;
+              article.content=req.body.content;
+              article.save();
+              res.json(article);
+          }
+          })
+   
+});
+
+
+
 module.exports = router;

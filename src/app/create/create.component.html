@@ -1,3 +1,25 @@
-<p>
-  create works!
-</p>
+<div class="article-container">
+<form [formGroup]="articleFrm" (ngSubmit)="addArticle(article, articleFrm.value)" *ngIf="articleFrm" >
+<div class="row expanded">
+  <div class="small-12 columns">   
+       <label> Article Title
+         <input type="text" name="title" [formControl]="articleFrm.controls['title']"
+          formControlName="title">
+       </label>
+       <div class="alert" *ngIf="!articleFrm.controls['title'].valid &&
+       articleFrm.controls['title'].touched">
+       Title must be atleast 10 and 45 characters in length
+      </div>
+       <label>Description
+        <textarea id="content" name="content" [formControl]="articleFrm.controls['content']"
+         formControlName="content"></textarea>
+      </label>
+      <div class="alert" *ngIf="!articleFrm.controls['content'].valid &&
+       articleFrm.controls['content'].touched">
+       content must be atleast 10 characters in length
+      </div>
+      <input type="submit" class="cta-btn filled" value="Post Article" [disabled]="!articleFrm.valid">
+    </div><!--columns-->
+   </div><!--row-->
+ </form>
+</div><!--article-->
