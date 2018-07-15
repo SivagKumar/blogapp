@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { Article } from './article';
+
 @Injectable()
 export class ArticleService {
 
@@ -12,5 +14,19 @@ export class ArticleService {
     return this._http.get('/api/all')
     .map(result => this.result = result.json());
   }
+
+  getArticle(id) {
+     return this._http.get('api/articles/' + id)
+     .map(result => this.result = result.json());
+  }
+
+  insertArticle(post: Article) {
+
+    let headers = new Headers({'content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+
+    return this._http.post('api/create', JSON.stringify(post), options)
+    .map(result => this.result = result.json());
+ }
 
 }

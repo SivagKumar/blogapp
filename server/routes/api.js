@@ -26,5 +26,35 @@ router.get('/all', (req,res) => {
     });
 });
 
+router.get('/articles/:id', (req,res)=> {
 
+    console.log('Finding a single article');
+
+    article.findById(req.params.id)
+       .exec((err,article)=>{
+           if(err){
+               console.log('Error getting the article')
+           }
+           else{
+               res.json(article);
+           }
+       });
+});
+
+router.post('/create', (req,res) => {
+ 
+    console.log('Posting a single article');
+    
+    var newArticle= new article();
+    newArticle.tile= req.body.title;
+    newArticle.content= req.body.content;
+    newArticle.save( (err, article) => {
+          if(err){
+              console.log('Error posting an record');
+          }
+          else{
+              res.json(article);
+          }
+    });
+});
 module.exports = router;
