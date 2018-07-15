@@ -77,6 +77,21 @@ router.post('/update/:id', (req,res) => {
    
 });
 
+router.get('/delete/:id', (req,res)=> {
+
+    console.log('Deleting a single article');
+
+    article.findByIdAndRemove(req.params.id)
+       .exec((err,article)=>{
+           if(err){
+               console.log('Error Deleting the article')
+           }
+           else{
+               res.json(article);
+           }
+       });
+});
+
 
 
 module.exports = router;
